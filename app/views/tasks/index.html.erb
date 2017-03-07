@@ -1,0 +1,30 @@
+<h2>
+  <p>
+    Current Tasks
+  </p>
+</h2>
+
+<% @task.each do |el| %>
+  <ul>
+    <h3>
+      <%= el[:id] %>
+    </h3>
+    <li>
+      Name: <%= el[:name] %>
+    </li>
+    <li>
+      Rating: <%= el[:rating] %>
+    </li>
+    <p>
+      <%= link_to "Edit this task", edit_task_path(el) %>
+      <%= link_to "Show this task alone", task_path(el) %>
+      <%= link_to "DELETE this task", task_path(el),
+        method: :delete,
+        data: { confirm: "Are you sure?" } %>
+    </p>
+  </ul>
+<% end %>
+
+<h1>
+    <%= link_to "Create a new task", new_task_path %>
+</h1>
